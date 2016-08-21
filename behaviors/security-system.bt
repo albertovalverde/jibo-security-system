@@ -1,0 +1,162 @@
+{
+    "1": {
+        "id": 1,
+        "class": "Sequence",
+        "name": "",
+        "options": {},
+        "children": [
+            "a4c10043-2cab-447f-a1fa-d3f6dd32a82f",
+            "8a62e720-15dc-4fc5-8407-8ba094a43f8c",
+            "f4a9e8cf-7504-4e35-a23a-4d8e50e3f9a2",
+            "76ddcf44-0b81-4656-aab6-d48ce00c063d"
+        ]
+    },
+    "meta": {
+        "version": 1
+    },
+    "76ddcf44-0b81-4656-aab6-d48ce00c063d": {
+        "id": "76ddcf44-0b81-4656-aab6-d48ce00c063d",
+        "class": "Listen",
+        "name": "",
+        "options": {
+            "getOptions": [
+                "() => {",
+                "    let options = {",
+                "        heyJibo: false,",
+                "        detectEnd: false,",
+                "        incremental: false,",
+                "        authenticateSpeaker: ''",
+                "    }",
+                "    return options;",
+                "}"
+            ],
+            "rule": "alarm-on.rule",
+            "onResult": [
+                "(listener) => {",
+                "    listener.on('cloud', function(asrResult, speakerIds) {",
+                "      console.log(\"Security mode is enabled\");",
+                "    //  var tracking = require('tracking-min.js');",
+                "      var $ = require('jquery');",
+                "    ",
+                "      ",
+                "      var video = document.getElementById('video');",
+                "             var canvas = document.getElementById('canvas');",
+                "             var context = canvas.getContext('2d');",
+                "",
+                "             var tracker = new tracking.ObjectTracker('face');",
+                "             tracker.setInitialScale(4);",
+                "             tracker.setStepSize(2);",
+                "             tracker.setEdgesDensity(0.1);",
+                "",
+                "             tracking.track('#video', tracker, { camera: true });",
+                "             ",
+                "",
+                "             tracker.on('track', function(event) {",
+                "               ",
+                "               var animate = require(\"jibo\").animate;",
+                "     var animPath = \"animations/security-ready.keys\";  // path to animation file",
+                "var basePath = \"\";             // base path for texture resolution",
+                "",
+                "animate.createAnimationBuilderFromKeysPath(animPath, basePath, (builder) => {",
+                "// add listener",
+                "builder.on(animate.AnimationEventType.STOPPED, (eventType, instance, payload) => {",
+                "console.log(\"Animation stopped; was interrupted = \" + payload.interrupted);",
+                "});",
+                "",
+                "",
+                "// trigger an instance of the animation",
+                "//  var $ = require('jquery');",
+                "//$(\"#face\").css(\"display\",\"none\");",
+                "builder.play();",
+                "});",
+                "               ",
+                "               ",
+                "                 ",
+                "               ",
+                "              // context.clearRect(0, 0, canvas.width, canvas.height);",
+                "",
+                "               event.data.forEach(function(rect) {",
+                "                 ",
+                "                 console.log('Detecting a Face');",
+                "                 ",
+                "                 var animate = require(\"jibo\").animate;",
+                "       var animPath = \"animations/security-detecting.keys\";  // path to animation file",
+                "var basePath = \"\";             // base path for texture resolution",
+                "",
+                "animate.createAnimationBuilderFromKeysPath(animPath, basePath, (builder) => {",
+                "// add listener",
+                "builder.on(animate.AnimationEventType.STOPPED, (eventType, instance, payload) => {",
+                "  console.log(\"Animation stopped; was interrupted = \" + payload.interrupted);",
+                "});",
+                "",
+                "",
+                "// trigger an instance of the animation",
+                "//  var $ = require('jquery');",
+                "//$(\"#face\").css(\"display\",\"none\");",
+                "builder.play();",
+                "});",
+                "                 ",
+                "                 /*context.strokeStyle = '#a64ceb';",
+                "                 context.strokeRect(rect.x, rect.y, rect.width, rect.height);",
+                "                 context.font = '11px Helvetica';",
+                "                 context.fillStyle = \"#fff\";",
+                "                 context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);",
+                "                 context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);",
+                "                 ",
+                "                 console.log('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);",
+                "                 console.log('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);",
+                "                 */",
+                "               });",
+                "               ",
+                "             });",
+                "",
+                "             var gui = new dat.GUI();",
+                "             gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);",
+                "             gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);",
+                "             gui.add(tracker, 'stepSize', 1, 5).step(0.1);",
+                "             ",
+                "            ",
+                "",
+                "    });",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1,
+        "skipped": false
+    },
+    "f4a9e8cf-7504-4e35-a23a-4d8e50e3f9a2": {
+        "id": "f4a9e8cf-7504-4e35-a23a-4d8e50e3f9a2",
+        "class": "PlayAnimation",
+        "name": "",
+        "options": {
+            "animPath": "greeting.keys",
+            "config": [
+                "(animation) => {",
+                "}"
+            ]
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "8a62e720-15dc-4fc5-8407-8ba094a43f8c": {
+        "id": "8a62e720-15dc-4fc5-8407-8ba094a43f8c",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "FX_Bawhoop.mp3"
+        },
+        "asset-pack": "core",
+        "parent": 1
+    },
+    "a4c10043-2cab-447f-a1fa-d3f6dd32a82f": {
+        "id": "a4c10043-2cab-447f-a1fa-d3f6dd32a82f",
+        "class": "PlayAudio",
+        "name": "",
+        "options": {
+            "audioPath": "FX_GoodJob_01.mp3"
+        },
+        "asset-pack": "core",
+        "parent": 1
+    }
+}

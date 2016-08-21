@@ -9,3 +9,5 @@ Installation:
 3 Start the Jibo simulator.
 
 4 Speak Jibo "go"
+
+For testing ! Jibo is able to detect your presence. Please cover and uncove your face and you'll see how Jibo is able to capture and respond to the different events.

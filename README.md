@@ -7,3 +7,5 @@ Installation:
 2 Run npm install.
 
 3 Start the Jibo simulator.
+
+4 Speak Jibo "go"

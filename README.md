@@ -1,3 +1,5 @@
+FACE DETECTION FUNCTIONALITY FOR JIBO!!
+
 [Jibo SDK & API Documentation](https://developers.jibo.com/sdk/docs/)
 
 Installation:

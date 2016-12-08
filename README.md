@@ -13,3 +13,6 @@ Installation:
 4 Speak Jibo "go"
 
 For testing ! Jibo is able to detect your presence. Please cover and uncove your face and you'll see how Jibo is able to capture and respond to the different events.
+
+DEMO:
+https://youtu.be/2SFEr_TDK24
